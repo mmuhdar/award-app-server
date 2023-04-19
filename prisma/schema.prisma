@@ -13,6 +13,7 @@ datasource db {
 model Profile {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   email String @unique
+  role String
   name String
   awards Award[]
   createdAt DateTime @default(now())
