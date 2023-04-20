@@ -70,9 +70,7 @@ export class ProfileService {
 
   async findAll(): Promise<Profile[]> {
     try {
-      const data = await this.prisma.profile.findMany({
-        include: { awards: true },
-      });
+      const data = await this.prisma.profile.findMany();
       return data;
     } catch (error) {
       errorHandler(error);

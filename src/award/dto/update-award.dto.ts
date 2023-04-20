@@ -5,5 +5,6 @@ export class UpdateAwardDto extends PartialType(CreateAwardDto) {
   name?: string;
   type?: string;
   poin?: number;
+  image?: string;
   profileId?: string;
 }

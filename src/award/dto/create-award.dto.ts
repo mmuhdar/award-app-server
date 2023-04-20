@@ -1,4 +1,11 @@
-import { IsEnum, IsInt, IsNotEmpty, IsString, Min } from 'class-validator';
+import {
+  IsEnum,
+  IsInt,
+  IsNotEmpty,
+  IsString,
+  IsUrl,
+  Min,
+} from 'class-validator';
 import { AwardType } from '../enum/type.enum';
 
 export class CreateAwardDto {
@@ -16,6 +23,12 @@ export class CreateAwardDto {
   @Min(0)
   poin: number;
 
+  @IsNotEmpty()
   @IsString()
-  profileId?: string;
+  @IsUrl()
+  image: string;
+
+  @IsNotEmpty()
+  @IsString()
+  profileId: string;
 }

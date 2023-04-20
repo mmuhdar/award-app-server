@@ -1,15 +1,8 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AwardService } from './award.service';
-import { CreateAwardDto } from './dto/create-award.dto';
-import { UpdateAwardDto } from './dto/update-award.dto';
+import { CreateAwardDto } from './dto';
+import { User } from 'src/decorator';
+import { TokenPayload } from 'src/profile/interface';
 
 @Controller('award')
 export class AwardController {
@@ -21,22 +14,7 @@ export class AwardController {
   }
 
   @Get()
-  findAll() {
-    return this.awardService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.awardService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAwardDto: UpdateAwardDto) {
-    return this.awardService.update(+id, updateAwardDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.awardService.remove(+id);
+  findAll(@User() user: TokenPayload) {
+    return this.awardService.findAll(user);
   }
 }

@@ -1,9 +1,4 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { AuthController, ProfileController } from './profile.controller';
 import { PrismaModule } from 'src/prisma/prisma.module';

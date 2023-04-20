@@ -1,5 +1,5 @@
 export enum AwardType {
-  VOUCHERS = 'Vouchers',
-  PRODUCTS = 'Products',
-  GIFTCARD = 'Giftcard',
+  VOUCHERS = 'VOUCHERS',
+  PRODUCTS = 'PRODUCTS',
+  GIFTCARD = 'GIFTCARD',
 }
