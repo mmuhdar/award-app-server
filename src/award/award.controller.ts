@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { AwardService } from './award.service';
 import { CreateAwardDto } from './dto';
 import { User } from 'src/decorator';
 import { TokenPayload } from 'src/profile/interface';
+import { AwardQuery } from './interface';
 
 @Controller('award')
 export class AwardController {
@@ -14,7 +15,7 @@ export class AwardController {
   }
 
   @Get()
-  findAll(@User() user: TokenPayload) {
-    return this.awardService.findAll(user);
+  findAll(@User() user: TokenPayload, @Query() query: AwardQuery) {
+    return this.awardService.findAll(user, query);
   }
 }

@@ -24,8 +24,8 @@ let AwardController = class AwardController {
     create(createAwardDto) {
         return this.awardService.create(createAwardDto);
     }
-    findAll(user) {
-        return this.awardService.findAll(user);
+    findAll(user, query) {
+        return this.awardService.findAll(user, query);
     }
 };
 __decorate([
@@ -38,8 +38,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, decorator_1.User)()),
+    __param(1, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], AwardController.prototype, "findAll", null);
 AwardController = __decorate([
