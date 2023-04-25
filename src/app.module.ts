@@ -10,6 +10,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AwardModule } from './award/award.module';
 import { ProfileModule } from './profile/profile.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { AwardController } from './award/award.controller';
+import { ProfileController } from './profile/profile.controller';
 
 @Module({
   imports: [PrismaModule, AwardModule, ProfileModule],
@@ -29,7 +31,11 @@ export class AppModule implements NestModule {
           path: 'login',
           method: RequestMethod.POST,
         },
+        {
+          path: '',
+          method: RequestMethod.GET,
+        },
       )
-      .forRoutes(AppController);
+      .forRoutes(AppController, AwardController, ProfileController);
   }
 }

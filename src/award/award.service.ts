@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAwardDto } from './dto';
-import { errorHandler } from 'src/utils';
+import { errorHandler, excludeField } from 'src/utils';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Award } from '@prisma/client';
 import { TokenPayload } from 'src/profile/interface';
@@ -33,6 +33,9 @@ export class AwardService {
       const data = await this.prisma.award.findMany({
         where: { profileId: id },
         include: { owner: true },
+      });
+      data.forEach((el) => {
+        excludeField(el.owner, ['createdAt', 'updateAt', 'role', 'email']);
       });
       return data;
     } catch (error) {

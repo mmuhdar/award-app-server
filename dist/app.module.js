@@ -14,6 +14,8 @@ const prisma_module_1 = require("./prisma/prisma.module");
 const award_module_1 = require("./award/award.module");
 const profile_module_1 = require("./profile/profile.module");
 const logger_middleware_1 = require("./middlewares/logger.middleware");
+const award_controller_1 = require("./award/award.controller");
+const profile_controller_1 = require("./profile/profile.controller");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer
@@ -24,8 +26,11 @@ let AppModule = class AppModule {
         }, {
             path: 'login',
             method: common_1.RequestMethod.POST,
+        }, {
+            path: '',
+            method: common_1.RequestMethod.GET,
         })
-            .forRoutes(app_controller_1.AppController);
+            .forRoutes(app_controller_1.AppController, award_controller_1.AwardController, profile_controller_1.ProfileController);
     }
 };
 AppModule = __decorate([

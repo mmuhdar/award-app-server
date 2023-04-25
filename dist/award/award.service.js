@@ -42,6 +42,9 @@ let AwardService = class AwardService {
                 where: { profileId: id },
                 include: { owner: true },
             });
+            data.forEach((el) => {
+                (0, utils_1.excludeField)(el.owner, ['createdAt', 'updateAt', 'role', 'email']);
+            });
             return data;
         }
         catch (error) {

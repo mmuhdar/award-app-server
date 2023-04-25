@@ -66,7 +66,11 @@ let ProfileService = class ProfileService {
                 role: found.role,
             };
             const token = await (0, utils_1.createToken)(tokenPayload);
-            return { token };
+            return {
+                name: found.name,
+                role: found.role,
+                accessToken: token,
+            };
         }
         catch (error) {
             (0, utils_1.errorHandler)(error);
