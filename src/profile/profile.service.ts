@@ -62,7 +62,11 @@ export class ProfileService {
         role: found.role,
       };
       const token = await createToken(tokenPayload);
-      return { token };
+      return {
+        name: found.name,
+        role: found.role,
+        accessToken: token,
+      };
     } catch (error) {
       errorHandler(error);
     }
